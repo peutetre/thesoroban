@@ -22,7 +22,7 @@
         this.startY = 0;
         this.currentY = 0;
 
-        this.el = document.createElement("div");
+        this.el = win.document.createElement("div");
         this.el.className = "bead";
         this.translate(this.init);
 
@@ -33,7 +33,7 @@
         this.container.appendChild(this.el);
     };
 
-    Bead.prototype.onTouchStart = function (evt) {
+    win.Bead.prototype.onTouchStart = function (evt) {
         prevent(evt);
         if (evt.targetTouches.length > 1) { return false; }
         if(this.isTheOnlyTouchedBead()) {
@@ -42,13 +42,13 @@
         }
     };
 
-    Bead.prototype.moveDirection = function (y) {
+    win.Bead.prototype.moveDirection = function (y) {
         var dir = (this.currentY - y) > 0;
         this.currentY = y;
         return dir;
     };
 
-    Bead.prototype.isTheOnlyTouchedBead = function () {
+    win.Bead.prototype.isTheOnlyTouchedBead = function () {
         for (var i = 0; i< this.type; i++) {
             if (this.beadList[i].touched) {
                 if (this.beadList[i].id != this.id) {
@@ -59,27 +59,27 @@
         return true;
     };
 
-    Bead.prototype.getNext = function () {
+    win.Bead.prototype.getNext = function () {
         return this.position+1 >= this.type
                ? null : this.beadList[this.position+1];
     };
 
-    Bead.prototype.getPrevious = function () {
+    win.Bead.prototype.getPrevious = function () {
         return this.position-1 < 0 ? null : this.beadList[this.position-1];
     };
 
-    Bead.prototype.translate = function (l) {
+    win.Bead.prototype.translate = function (l) {
         this.el.style.webkitTransform = translate(-l);
         return l;
     };
 
-    Bead.prototype.move = function (y) {
+    win.Bead.prototype.move = function (y) {
         return this.translate(
             y >= this.maxMove ? this.maxMove : (y <= this.minMove ? this.minMove : y)
         );
     };
 
-    Bead.prototype.getUpGroup = function (y) {
+    win.Bead.prototype.getUpGroup = function (y) {
         var group = [],
             next, l;
         group.push(this);
@@ -96,7 +96,7 @@
         return group;
     };
 
-    Bead.prototype.getDownGroup = function (y) {
+    win.Bead.prototype.getDownGroup = function (y) {
         var group = [],
             previous, l;
         group.push(this);
@@ -113,14 +113,14 @@
         return group;
     };
 
-    Bead.prototype.moveGroup = function (y, group, direction) {
+    win.Bead.prototype.moveGroup = function (y, group, direction) {
         this.move(y);
         for(var i=1; i<group.length; i++) {
             group[i].init = group[i].move(y + direction * BEAD_HEIGHT * i);
         }
     };
 
-    Bead.prototype.change = function (y, direction) {
+    win.Bead.prototype.change = function (y, direction) {
         var upGroup = this.getUpGroup(y),
             downGroup = this.getDownGroup(y);
 
@@ -139,7 +139,7 @@
         }
     };
 
-    Bead.prototype.onTouchMove = function (evt) {
+    win.Bead.prototype.onTouchMove = function (evt) {
         var y;
         prevent(evt);
         if (evt.targetTouches.length > 1) { return false; }
@@ -149,7 +149,7 @@
         }
     };
 
-    Bead.prototype.onTouchEnd = function (evt) {
+    win.Bead.prototype.onTouchEnd = function (evt) {
         prevent(evt);
         if(this.touched) {
             this.touched = false;

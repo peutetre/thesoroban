@@ -15,7 +15,7 @@
     };
 
     win.Rod.prototype.init = function () {
-        this.el = document.createElement("div");
+        this.el = win.document.createElement("div");
         this.el.className = "rod";
         this.el.style.width = px(WIDTH);
         this.el.style.top = px(this.pos.line ? SMALL_TOP : BIG_TOP);

@@ -8,9 +8,9 @@
             app.rods = [];
             app.container = $("main-container");
 
-            on("touchstart", document, prevent, false);
-            on("touchmove", document, prevent, false);
-            on("touchend", document, prevent, false);
+            on("touchstart", window.document, prevent, false);
+            on("touchmove", window.document, prevent, false);
+            on("touchend", window.document, prevent, false);
 
             for (var i=0; i< 14; i++) {
                 app.rods.push(new window.Rod({
