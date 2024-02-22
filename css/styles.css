@@ -8,6 +8,8 @@ body {
     background:url(../images/soroban.png);
     width:1024px;
     height:768px;
+    background-repeat: no-repeat;
+    background-color:black;
 }
 
 .rod {
@@ -26,6 +28,8 @@ body {
     body {
         background:url(../images/soroban@2x.png);
         background-size: 1024px 768px;
+        background-repeat: no-repeat;
+        background-color:black;
     }
     .bead {
         background:url(../images/bead@2x.png);

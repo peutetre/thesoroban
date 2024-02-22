@@ -8,6 +8,8 @@
             app.rods = [];
             app.container = $("main-container");
 
+            TouchEmulator();
+
             on("touchstart", window.document, prevent, false);
             on("touchmove", window.document, prevent, false);
             on("touchend", window.document, prevent, false);
